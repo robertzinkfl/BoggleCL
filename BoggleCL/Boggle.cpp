@@ -1,3 +1,11 @@
+/*
+* Robert Zink
+* 2 September 2017
+* robertzinkfl@gmail.com
+*
+* BoggleCL - Boggle.cpp
+*/
+
 #include <iostream>
 #include <ctime>
 #include <array>

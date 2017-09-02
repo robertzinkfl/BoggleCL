@@ -1,3 +1,11 @@
+/*
+ * Robert Zink
+ * 2 September 2017
+ * robertzinkfl@gmail.com
+ *
+ * BoggleCL - dice.cpp
+ */
+
 #include "dice.h"
 #include <array>
 #include <string>
@@ -7,6 +15,10 @@
 #include <ctime>
 #include <iostream>
 
+/*
+ * Dice constructor
+ * Sets up the Boggle dice and neighbor spots
+ */
 Dice::Dice() {
 	dice = { { { "A", "E", "A", "N", "E", "G" },
 			   { "A", "H", "S", "P", "C", "O" },
@@ -24,25 +36,6 @@ Dice::Dice() {
 			   { "T", "O", "E", "S", "S", "I" },
 			   { "T", "E", "R", "W", "H", "V" },
 			   { "N", "U", "I", "H", "M", "Qu" } } };
-
-	/*
-	neighbors = { { { 1, 4, 5, NULL, NULL, NULL, NULL, NULL },
-					{ 0, 2, 4, 5, 6, NULL, NULL, NULL },
-					{ 1, 3, 5, 6, 7, NULL, NULL, NULL },
-					{ 2, 6, 7, NULL, NULL, NULL, NULL, NULL },
-					{ 0, 1, 5, 8, 9, NULL, NULL, NULL },
-					{ 0, 1, 2, 4, 6, 8, 9, 10 },
-					{ 1, 2, 3, 5, 7, 9, 10, 11 },
-					{ 2, 3, 6, 10, 11, NULL, NULL, NULL },
-					{ 4, 5, 9, 12, 13, NULL, NULL, NULL },
-					{ 4, 5, 6, 8, 10, 12, 13, 14 },
-					{ 5, 6, 7, 9, 11, 13, 14, 15 },
-					{ 6, 7, 10, 14, 15, NULL, NULL, NULL },
-					{ 8, 9, 13, NULL, NULL, NULL, NULL, NULL },
-					{ 8, 9, 10, 12, 14, NULL, NULL, NULL },
-					{ 9, 10, 11, 13, 15, NULL, NULL, NULL },
-					{ 10, 11, 14, NULL, NULL, NULL, NULL, NULL } } };
-	*/
 
 	neighbors = { { { 1, 4, 5 },
 					{ 0, 2, 4, 5, 6 },
@@ -62,6 +55,10 @@ Dice::Dice() {
 					{ 10, 11, 14 } } };
 }
 
+/*
+ * Function: roll_dice
+ * Used to pick the selection of dice randomly for the current game
+ */
 void Dice::roll_dice() {
 	std::srand(time(NULL));
 
@@ -73,10 +70,18 @@ void Dice::roll_dice() {
 	shuffle(rolled.begin(), rolled.end(), std::default_random_engine(seed));
 }
 
+/*
+ * Function: get_rolled_dice
+ * Getter function for the dice rolled
+ */
 const std::array<std::string, 16> Dice::get_rolled_dice() const {
 	return rolled;
 }
 
+/*
+ * Function: print_board
+ * Prints out the current dice board to standard output
+ */
 void Dice::print_board() {
 	for (int i = 0; i < rolled.size(); i++) {
 		std::cout << "[" + rolled[i] + "] ";
@@ -86,11 +91,9 @@ void Dice::print_board() {
 }
 
 /*
-std::array<int, 8> Dice::get_neighbors(int pos) {
-	return neighbors[pos];
-}
-*/
-
+ * Function: get_neighbors
+ * Returns the neighboring spots to pos
+ */
 std::vector<int> Dice::get_neighbors(int pos) {
 	return neighbors[pos];
 }
