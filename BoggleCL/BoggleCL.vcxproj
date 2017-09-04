@@ -113,9 +113,11 @@
   <ItemGroup>
     <ClCompile Include="Boggle.cpp" />
     <ClCompile Include="dice.cpp" />
+    <ClCompile Include="game.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="dice.h" />
+    <ClInclude Include="game.h" />
   </ItemGroup>
   <ItemGroup>
     <Text Include="dictionary.txt" />
